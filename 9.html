@@ -28,6 +28,11 @@ body {
 .myModal::backdrop {
   opacity: .8;
   background: linear-gradient( #1cb5e0, #000046 );
+  transition: opacity .5s;
+}
+
+.myModal.-closing::backdrop {
+  opacity: 0;
 }
 
 </style>
@@ -75,7 +80,8 @@ function showModal( id ) {
 function closeModal( id ) {
 
   const $modal = document.getElementById( id );
-  $modal.close();
+  $modal.addEventListener( 'transitionend', $modal.close, { once: true } )
+  $modal.classList.add( '-closing' );
 
 }
 </script>

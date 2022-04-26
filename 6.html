@@ -18,6 +18,7 @@ body {
   padding: 16px;
   border: 0;
   transition: opacity .5s, transform .5s;
+  overscroll-behavior: none;
 }
 
 .myModal.-closing {
@@ -28,6 +29,11 @@ body {
 .myModal::backdrop {
   opacity: .8;
   background: linear-gradient( #1cb5e0, #000046 );
+  transition: opacity .5s;
+}
+
+.myModal.-closing::backdrop {
+  opacity: 0;
 }
 
 </style>
@@ -66,8 +72,6 @@ function showModal( id ) {
 
   const $modal = document.getElementById( id );
   $modal.showModal();
-  // モーダルが開いた一瞬後に、`-closing` のクラスを削除する
-  requestAnimationFrame( () => $modal.classList.remove( '-closing' ) );
 
 }
 

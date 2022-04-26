@@ -80,8 +80,7 @@ function showModal( id ) {
 function closeModal( id ) {
 
   const $modal = document.getElementById( id );
-  $modal.addEventListener( 'transitionend', $modal.close, { once: true } )
-  $modal.classList.add( '-closing' );
+  $modal.close();
 
 }
 </script>
